@@ -1,10 +1,8 @@
 var db = require('./models');
 
 var snippetObject = {
-  name: "Justin",
-  address: "225 Bushie",
-  favoriteColor: "Periwinkle",
-  shoes: [ "Mahabis", "Sambas", "Cons", "Cole Haan" ]
+  title: "working",
+  text: "work hard late at night when I heard a boom."
 };
 
 db.Snippet.remove({}, function(err, deletedSnippets){

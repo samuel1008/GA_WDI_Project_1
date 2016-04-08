@@ -10,15 +10,15 @@ $(document).ready(function() {
       error: onError
   });
 
-  $('#newBookForm').on('submit', function(e) {
+  $('#newSnippetForm').on('submit', function(e) {
     e.preventDefault();
-    console.log('new book serialized', $(this).serializeArray());
+    console.log('new snippet serialized', $(this).serializeArray());
     $.ajax({
       method: 'POST',
-      url: '/api/books',
+      url: '/api/snippets',
       data: $(this).serializeArray(),
-      success: newBookSuccess,
-      error: newBookError
+      success: newSnippetSuccess,
+      error: newSnippetError
     });
   });
 });
@@ -42,4 +42,13 @@ function onSuccess(snippets){
 function onError(error) {
   console.log("DAMNIT! ERROR!!!");
   console.log(error);
+}
+
+function newSnippetSuccess(json) {
+  $('#newSnippetForm input').val('');
+  renderSnippet(json);
+}
+
+function newSnippetError() {
+  console.log('newSnippet error!');
 }
