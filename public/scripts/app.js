@@ -3,12 +3,11 @@
  */
 $(document).ready(function() {
   console.log('app.js loaded!');
-  $.ajax({
-      method: "GET",
-      url: "api/snippets",
-      success: onSuccess,
-      error: onError
-  });
+  $.get('/api/snippets').success(function (snippets) {
+      snippets.forEach(function(snippet) {
+        renderSnippet(snippet);
+      });
+    });
 
   $('#newSnippetForm').on('submit', function(e) {
     e.preventDefault();

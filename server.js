@@ -37,7 +37,7 @@ var controllers = require('./controllers');
  app.get('/api/snippets', controllers.snippets.index);
  // app.get('/api/snippets/:snippetId', controllers.snippets.show);
  app.post('/api/snippets', controllers.snippets.create);
- // app.delete('/api/snippets/:snippetId', controllers.snippets.destroy);
+ app.delete('/api/snippets/:snippetId', controllers.snippets.destroy);
  // app.put('/api/snippets/:snippetId', controllers.snippets.update);
 
 /*********
