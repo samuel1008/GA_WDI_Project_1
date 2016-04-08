@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+}
+
+.jumbotron{
+  position: relative;
+  background-image: url('../images/rsz_1bamboo_forrest.jpg');
+  width: 100%;
+  height: 590px;
+  background-repeat: no-repeat;
+  background-color: blue;
+
+}
