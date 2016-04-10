@@ -18,7 +18,7 @@ function create(req, res) {
     text: req.body.text
   });
   console.log(newSnippet);
-  // save new post in db
+  // save new snippet in db
   newSnippet.save(function (err, savedSnippet) {
     if (err) {
       res.status(500).json({ error: err.message });
@@ -29,12 +29,26 @@ function create(req, res) {
   });
 }
 
+// delete post
+function destroy (req, res) {
+  // get post id from url params (`req.params`)
+  var snippetId = req.params.snippetId;
+
+  // find post in db by id and remove
+  db.Snippet.findOneAndRemove({ _id: snippetId }, function (err, deletedSnippet) {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json(deletedSnippet);
+    }
+  });
+}
 
 // export public methods here
 module.exports = {
   index: index,
   create: create,
   // show: show,
-  // destroy: destroy,
+  destroy: destroy,
   // update: update
 };
