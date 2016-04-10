@@ -2,7 +2,7 @@
  *CLIENT-SIDE JS
  */
  // base API route
- var baseUrl = '/api/snippets';
+ var baseUrl = '/api/snippets/';
 
  // array to hold post data from API
  var allSnippets = [];
@@ -10,11 +10,9 @@
  // element to display list of posts
  var $snippetsList = $('#snippets-list');
 
- // form to create new post
- var $createpost = $('#create-post');
-
 $(document).ready(function() {
   console.log('app.js loaded!');
+   var baseUrl = '/api/snippets/';
   $.get(baseUrl).success(function (snippets) {
       snippets.forEach(function(snippet) {
         renderSnippet(snippet);
@@ -32,26 +30,39 @@ $(document).ready(function() {
       error: newSnippetError
     });
   });
+//
+//   $('body').on('submit', '.deleteBtn', function(e) {
+//   e.preventDefault();
+//   console.log('clicked delete button to', 'baseUrl'+$(this).attr('data-id'));
+//   $.ajax({
+//     method: 'DELETE',
+//     url: 'baseUrl'+$(this).attr('data-id'),
+//     success: deleteSnippetSuccess,
+//     error: deleteSnippetError
+//   });
+// });
 
-  $snippetsList.on('click', '.deleteBtn', function() {
-  console.log('clicked delete button to', 'baseUrl'+$(this).attr('data-id'));
-  $.ajax({
-    method: 'DELETE',
-    url: 'baseUrl'+$(this).attr('data-id'),
-    success: deleteSnippetSuccess,
+  $(".snippets").on('submit', "#deleteSnippetForm", function(e){
+    e.preventDefault();
+    console.log("this works");
+    $.ajax({
+      method: 'DELETE',
+      url: baseUrl+$(this).attr('data-id'),
+      success: deleteSnippetSuccess,
+      error: deleteSnippetError
+    });
   });
-});
-
 
 });
 
 // this function takes a single snippet and renders it to the page
 function renderSnippet(snippet) {
   console.log('rendering snippet', snippet);
+  $snippetsList.empty();
   var snippetHtml = $('#snippets-template').html();
   var snippetsTemplate = Handlebars.compile(snippetHtml);
   var html = snippetsTemplate(snippet);
-  $('#snippets').prepend(html);
+  $('.snippets').prepend(html);
   console.log(2);
 }
 
@@ -88,4 +99,8 @@ function deleteSnippetSuccess(json) {
     }
   }
   renderSnippet();
+}
+
+function deleteSnippetError() {
+  console.log('deleteSnippet error!');
 }
