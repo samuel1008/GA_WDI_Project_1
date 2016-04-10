@@ -98,7 +98,8 @@ function deleteSnippetSuccess(json) {
       break;  // we found our snippet - no reason to keep searching (this is why we didn't use forEach)
     }
   }
-  renderSnippet();
+  console.log('removing the following album from the page:', snippetId);
+  $('div[data-snippet-id=' + snippetId + ']').remove();
 }
 
 function deleteSnippetError() {
