@@ -57,11 +57,11 @@ $(document).ready(function() {
   $(".snippets").on('click', ".btn-snippetUpdate", function (e) {
      e.preventDefault();
      $(this).serializeArray();
-     var snippetId = $(this).closest('.snippets').data('data-id');
-     console.log(baseUrl+snippetId,  baseUrl+$(this).attr('data-id'));
+     var snippetId = $(this).closest('.snippets').data('edit-id');
+     console.log(snippetId);
      $.ajax({
        method: 'PUT',
-       url: baseUrl+$(this).attr('data-id'),
+       url: baseUrl+$(this).attr('data-snippet-id'),
        data: $(this).serializeArray(),
        success: editSnippetSuccess
      });
