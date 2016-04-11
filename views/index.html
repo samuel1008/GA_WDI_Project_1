@@ -112,6 +112,12 @@
                           <div class="form-group">
                             <input type="text" class="form-control" name="comments" placeholder="Comments">
                           </div>
+                          <div class="display comments" id="showComments">
+                            <b>Comments:</b>
+                              {{#each comments}}
+                                {{comment}}
+                              {{/each}}
+                          </div>
                           <button type="submit" class="btn btn-default">Add Comment</button>
 
                         </form>

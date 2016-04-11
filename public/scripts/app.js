@@ -30,17 +30,6 @@ $(document).ready(function() {
       error: newSnippetError
     });
   });
-//
-//   $('body').on('submit', '.deleteBtn', function(e) {
-//   e.preventDefault();
-//   console.log('clicked delete button to', 'baseUrl'+$(this).attr('data-id'));
-//   $.ajax({
-//     method: 'DELETE',
-//     url: 'baseUrl'+$(this).attr('data-id'),
-//     success: deleteSnippetSuccess,
-//     error: deleteSnippetError
-//   });
-// });
 
   $(".snippets").on('submit', "#deleteSnippetForm", function(e){
     e.preventDefault();
@@ -50,6 +39,18 @@ $(document).ready(function() {
       url: baseUrl+$(this).attr('data-id'),
       success: deleteSnippetSuccess,
       error: deleteSnippetError
+    });
+  });
+
+  $(".snippets").on('submit', '#addCommentForm', function(e) {
+    e.preventDefault();
+    console.log('new comments');
+    $.ajax({
+      method: 'POST',
+      url: baseUrl+$(this).attr('data-id')+'/comments',
+      data: $(this).serializeArray(),
+      // success: newCommentSuccess,
+      // error: newCommentError
     });
   });
 
