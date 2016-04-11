@@ -57,7 +57,8 @@ $(document).ready(function() {
   $(".snippets").on('click', ".btn-snippetUpdate", function (e) {
      e.preventDefault();
      $(this).serializeArray();
-     console.log('work!!');
+     var snippetId = $(this).closest('.snippets').data('data-id');
+     console.log(baseUrl+snippetId,  baseUrl+$(this).attr('data-id'));
      $.ajax({
        method: 'PUT',
        url: baseUrl+$(this).attr('data-id'),
