@@ -102,6 +102,9 @@ function newSnippetError() {
 }
 
 function editSnippetSuccess(json) {
+  deleteSnippetSuccess(json);
+  renderSnippet(json);
+
 
 }
 

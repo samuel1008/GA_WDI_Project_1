@@ -103,19 +103,6 @@
                           </li>
 
                         </ul>
-
-                        <form class="form-inline" id="addCommentForm" data-id=\{{_id}}>
-                          <div class="form-group">
-                            <input type="text" class="form-control" name="comments" placeholder="Comments">
-                          </div>
-                          <div class="display comments" id="showComments">
-                            <b>Comments:</b>
-                            {{#each comments}}
-                              {{comment}}
-                            {{/each}}
-                          </div>
-                          <button type="submit" class="btn btn-default">Add Comment</button>
-                        </form>
                         <a href="javascript:void(0)" data-toggle="collapse" data-target="#\{{_id}}">
                           <button type="submit" class="btn btn-default" data-id="\{{_id}}">Edit</button>
                         </a>
