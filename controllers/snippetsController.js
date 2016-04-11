@@ -50,7 +50,7 @@ function update (req, res) {
   console.log('updating with data', req.body);
   db.Snippet.findById(req.params.snippetId, function(err, foundSnippet){
     if(err){
-      console.log('albumsController.update error', err);
+      console.log('snippetsController.update error', err);
     }
     foundSnippet.title = req.body.title;
     foundSnippet.text = req.body.text;

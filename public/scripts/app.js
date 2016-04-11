@@ -54,19 +54,17 @@ $(document).ready(function() {
     });
   });
 
-  // $(".snippets").on('submit', "#editSnippetForm", function(e){
-  //   e.preventDefault();
-  //   console.log("this works");
-  //   $.ajax({
-  //     method: 'PUT',
-  //     url: baseUrl+$(this).attr('data-id'),
-  //     success: editSnippetSuccess,
-  //     error: editSnippetError
-  //   });
-  // });
-
-
-
+  $(".snippets").on('click', ".btn-snippetUpdate", function (e) {
+     e.preventDefault();
+     $(this).serializeArray();
+     console.log('work!!');
+     $.ajax({
+       method: 'PUT',
+       url: baseUrl+$(this).attr('data-id'),
+       data: $(this).serializeArray(),
+       success: editSnippetSuccess
+     });
+   });
 
 });
 
