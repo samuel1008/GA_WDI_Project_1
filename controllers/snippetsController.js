@@ -13,10 +13,14 @@ function index(req, res) {
 
 // create new snippet
 function create(req, res) {
+
   var newSnippet = new db.Snippet({
     title: req.body.title,
     text: req.body.text
   });
+  if(!req.user){
+  return res.sendStatus(401);
+}
   console.log(newSnippet);
   // save new snippet in db
   newSnippet.save(function (err, savedSnippet) {
@@ -35,7 +39,9 @@ function create(req, res) {
 function destroy (req, res) {
   // get post id from url params (`req.params`)
   var snippetId = req.params.snippetId;
-
+  if(!req.user){
+  return res.sendStatus(401);
+}
   // find post in db by id and remove
   db.Snippet.findOneAndRemove({ _id: snippetId }, function (err, deletedSnippet) {
     if (err) {
@@ -49,6 +55,9 @@ function destroy (req, res) {
 function update (req, res) {
   console.log('updating with data', req.body);
   var snippetId = req.params.edit-id;
+  if(!req.user){
+  return res.sendStatus(401);
+}
   db.Snippet.findById({ _id: snippetId }, function(err, foundSnippet){
     if(err){
       console.log('snippetsController.update error', err);
