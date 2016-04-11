@@ -92,7 +92,7 @@ app.get('/logout', function (req, res) {
  // app.get('/api/snippets/:snippetId', controllers.snippets.show);
  app.post('/api/snippets', controllers.snippets.create);
  app.delete('/api/snippets/:snippetId', controllers.snippets.destroy);
- // app.put('/api/snippets/:snippetId', controllers.snippets.update);
+ app.put('/api/snippets/:snippetId', controllers.snippets.update);
 
 /*********
  * SERVER *

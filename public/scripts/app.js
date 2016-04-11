@@ -54,6 +54,19 @@ $(document).ready(function() {
     });
   });
 
+  $(".snippets").on('submit', "#editSnippetForm", function(e){
+    e.preventDefault();
+    console.log("this works");
+    $.ajax({
+      method: 'PUT',
+      url: baseUrl+$(this).attr('data-id'),
+      success: editSnippetSuccess,
+      error: editSnippetError
+    });
+  });
+
+
+
 });
 
 // this function takes a single snippet and renders it to the page
@@ -86,6 +99,17 @@ function newSnippetSuccess(json) {
 function newSnippetError() {
   console.log('newSnippet error!');
 }
+
+function editSnippetSuccess(json) {
+  console.log("edit!!!");
+  var snippetId = $(this).closest('.snippets').data('data-id');
+  console.log('edit snippet', snippetId);
+}
+
+function editSnippetError() {
+  console.log('edit error!');
+}
+
 
 function deleteSnippetSuccess(json) {
   var snippet = json;

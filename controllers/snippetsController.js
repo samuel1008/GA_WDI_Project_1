@@ -29,6 +29,8 @@ function create(req, res) {
   });
 }
 
+
+
 // delete post
 function destroy (req, res) {
   // get post id from url params (`req.params`)
@@ -44,11 +46,29 @@ function destroy (req, res) {
   });
 }
 
+function update (req, res) {
+  console.log('updating with data', req.body);
+  db.Snippet.findById(req.params.snippetId, function(err, foundSnippet){
+    if(err){
+      console.log('albumsController.update error', err);
+    }
+    foundSnippet.title = req.body.title;
+    foundSnippet.text = req.body.text;
+    foundSnippet.save(function(err, savedSnippet){
+      if(err) {
+        console.log("saving altered snippet failed");
+      }
+      res.json(savedSnippet);
+    });
+  });
+
+}
+
 // export public methods here
 module.exports = {
   index: index,
   create: create,
   // show: show,
   destroy: destroy,
-  // update: update
+  update: update
 };
