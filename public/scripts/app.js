@@ -54,16 +54,18 @@ $(document).ready(function() {
     });
   });
 
-  $(".snippets").on('submit', "#editSnippetForm", function(e){
-    e.preventDefault();
-    console.log("this works");
-    $.ajax({
-      method: 'PUT',
-      url: baseUrl+$(this).attr('data-id'),
-      success: editSnippetSuccess,
-      error: editSnippetError
-    });
-  });
+  // $(".snippets").on('submit', "#editSnippetForm", function(e){
+  //   e.preventDefault();
+  //   console.log("this works");
+  //   $.ajax({
+  //     method: 'PUT',
+  //     url: baseUrl+$(this).attr('data-id'),
+  //     success: editSnippetSuccess,
+  //     error: editSnippetError
+  //   });
+  // });
+
+
 
 
 });

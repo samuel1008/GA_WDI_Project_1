@@ -7,13 +7,7 @@
 
   <title>Sam's app</title>
   <script type="text/javascript">
-    window.user = {
-      {
-        {
-          user
-        }
-      }
-    };
+    window.user = {{{ user }}};
   </script>
 
   <!-- STYLESHEETS -->
@@ -22,9 +16,9 @@
 
   <!-- VENDOR SCRIPTS -->
   <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous">
-    < /script
+    </script>
 
-    < script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" >
+    <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
@@ -39,8 +33,8 @@
       <!-- Text input-->
     </div>
     <a href="/signup">Signup</a>
-        <a href="/login">Login</a>
-        <a href="/logout">Logout</a>
+    <a href="/login">Login</a>
+    <a href="/logout">Logout</a>
     <div class="jumbotron">
 
       <div id="header">
@@ -110,37 +104,56 @@
 
                         </ul>
 
-                        <form class="form-inline" id="addCommentForm" data-id=\{{_id}}>
+                        <form class="form-inline" id="addCommentForm" data-id=\ {{_id}}>
                           <div class="form-group">
                             <input type="text" class="form-control" name="comments" placeholder="Comments">
                           </div>
                           <div class="display comments" id="showComments">
                             <b>Comments:</b>
-                              {{#each comments}}
-                                {{comment}}
-                              {{/each}}
+                            {{#each comments}}
+                              {{comment}}
+                            {{/each}}
                           </div>
                           <button type="submit" class="btn btn-default">Add Comment</button>
-                        </form>
-                        <form class="form-inline" id="editSnippetForm" data-id=\{{_id}} name="delete">
+                          <!-- </form>
+                        <form class="form-inline" id="editSnippetForm" data-id=\{{_id}} name="edit">
                           <button type="submit" class="btn btn-default">Edit</button>
+                        </form> -->
                         </form>
-                        <form class="form-inline" id="deleteSnippetForm" data-id=\{{_id}} name="delete">
+                        <a href="javascript:void(0)" data-toggle="collapse" data-target="#\{{_id}}">
+                          <button type="submit" class="btn btn-default">Edit</button>
+                        </a>
+                        <form class="form-inline" id="deleteSnippetForm" data-id="\{{_id}}" name="delete">
                           <button type="submit" class="btn btn-default">Delete</button>
+                        </form>
+                      </div>
+                      <!-- form to update post -->
+                      <div class="collapse" id="\{{_id}}">
+                        <br>
+                        <form class="form-inline update-post">
+                          <div class="form-group">
+                            <input type="text" name="title" class="form-control" placeholder="Title" value="\{{title}}">
+                          </div>
+                          <div class="form-group">
+                            <input type="text" name="text" class="form-control" placeholder="Description" value="\{{text}}">
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" class="btn btn-block btn-default" value="Update">
+                          </div>
                         </form>
                       </div>
                     </div>
 
-                    </div>
                   </div>
                 </div>
+              </div>
             </script>
             <!-- end one snippet -->
 
-            </div>
           </div>
-        </section>
-        <!--   END FORM SAMPLE -->
+      </div>
+      </section>
+      <!--   END FORM SAMPLE -->
 
 </body>
 
