@@ -61,6 +61,7 @@ var controllers = require('./controllers');
 });
 
 // AUTH ENDPOINTS
+// show signup view
 app.get('/signup', function (req, res) {
   res.render('signup');
 });
@@ -89,6 +90,23 @@ app.post('/login', passport.authenticate('local'), function (req, res) {
   res.redirect('/');
 });
 
+app.get('/signup', function (req, res) {
+  // don't let the user signup again if they already exist
+  if (req.user) {
+    return res.redirect('/');
+  }
+  res.render('signup'); // signup form
+});
+
+app.get('/login', function (req, res) {
+  // if user is logged in, don't let them see login view
+  if (req.user) {
+    return res.redirect('/');
+  }
+
+  res.render('login'); // you can also use res.sendFile
+});
+
 // log out user
 app.get('/logout', function (req, res) {
   console.log("BEFORE logout", JSON.stringify(req.user));
@@ -96,6 +114,7 @@ app.get('/logout', function (req, res) {
   console.log("AFTER logout", req.user);
   res.redirect('/');
 });
+
 /*
  * JSON ENDPOINTS
  */
