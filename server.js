@@ -12,9 +12,11 @@ var express = require('express'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 
-    var db = require("./models"),
+var db = require("./models"),
         Post = db.Post,
         User = db.User;
+
+var controllers = require('./controllers');
 
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
@@ -41,7 +43,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.set('view engine', 'hbs');
 
-var controllers = require('./controllers');
+
 
 
 /**********
@@ -52,7 +54,7 @@ var controllers = require('./controllers');
  * HTML ENDPOINTS
  */
  app.get('/', function homepage(req, res) {
-   if (!req.user) {
+   if (req.user) {
   console.log(__dirname);
   res.render('index', {user: JSON.stringify(req.user) + " || null"});
 } else {
