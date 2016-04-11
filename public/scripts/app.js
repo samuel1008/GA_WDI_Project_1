@@ -66,7 +66,6 @@ $(document).ready(function() {
   });
 
 
-
 });
 
 // this function takes a single snippet and renders it to the page

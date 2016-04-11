@@ -49,36 +49,48 @@ var controllers = require('./controllers');
 /*
  * HTML ENDPOINTS
  */
- app.get('/', function homepage(req, res) {
-  console.log(__dirname);
-  res.sendFile(__dirname + '/views/index.html');
+ app.get('/', function homepage (req, res) {
+  res.render('index', {user: JSON.stringify(req.user) + " || null"});
 });
 
-// AUTH ENDPOINTS
-app.post('/signup', function (req, res) {
-  // if user is logged in, don't let them sign up again
-  if (!req.user) {
-    return res.redirect('/');
-  }
+app.get('/wardrobe', function (req, res) {
+  res.render('wardrobe', {user: JSON.stringify(req.user) + " || null"});
+});
 
+// AUTH ROUTES
+
+// show signup view
+app.get('/signup', function (req, res) {
+  res.render('signup');
+});
+
+// sign up new user, then log them in
+// hashes and salts password, saves new user to db
+app.post('/signup', function (req, res) {
   var new_user = new User({ username: req.body.username });
   User.register(new_user, req.body.password,
     function (err, newUser) {
       passport.authenticate('local')(req, res, function() {
-        console.log("SIGNUP SUCCESS");
         res.redirect('/');
       });
     }
   );
 });
 
+// show login view
+app.get('/login', function (req, res) {
+  res.render('login');
+});
+
+// log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
   console.log(JSON.stringify(req.user));
   res.redirect('/');
 });
 
+// log out user
 app.get('/logout', function (req, res) {
-  console.log("BEFORE logout", req.user);
+  console.log("BEFORE logout", JSON.stringify(req.user));
   req.logout();
   console.log("AFTER logout", req.user);
   res.redirect('/');
