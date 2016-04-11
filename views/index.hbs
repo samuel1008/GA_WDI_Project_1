@@ -124,7 +124,8 @@
                         </form>
                       </div>
                       <!-- form to update post -->
-                      <div class="collapse" id="\{{_id}}" data1-id="\{{_id}}">
+
+                      <div class="collapse" id="\{{_id}}">
                         <br>
                         <form class="form-inline update-post">
                           <div class="form-group">
@@ -133,8 +134,8 @@
                           <div class="form-group">
                             <input type="text" name="text" class="form-control" placeholder="Description" value="\{{text}}">
                           </div>
-                          <div class="form-group">
-                            <input type="submit" class="btn btn-update btn-block btn-default btn-snippetUpdate" value="Update">
+                          <div class="form-group" edit-id=\{{_id}}>
+                            <input type="submit" class="btn btn-update btn-block btn-default btn-snippetUpdate" edit-id="\{{_id}}" value="Update">
                           </div>
                         </form>
                       </div>

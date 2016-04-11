@@ -48,7 +48,7 @@ function destroy (req, res) {
 
 function update (req, res) {
   console.log('updating with data', req.body);
-  var snippetId = req.params._Id;
+  var snippetId = req.params.edit-id;
   db.Snippet.findById({ _id: snippetId }, function(err, foundSnippet){
     if(err){
       console.log('snippetsController.update error', err);
