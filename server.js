@@ -39,6 +39,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.set('view engine', 'hbs');
+
 var controllers = require('./controllers');
 
 
@@ -49,17 +51,16 @@ var controllers = require('./controllers');
 /*
  * HTML ENDPOINTS
  */
- app.get('/', function homepage (req, res) {
+ app.get('/', function homepage(req, res) {
+   if (!req.user) {
+  console.log(__dirname);
   res.render('index', {user: JSON.stringify(req.user) + " || null"});
+} else {
+  res.redirect('/login');
+}
 });
 
-app.get('/wardrobe', function (req, res) {
-  res.render('wardrobe', {user: JSON.stringify(req.user) + " || null"});
-});
-
-// AUTH ROUTES
-
-// show signup view
+// AUTH ENDPOINTS
 app.get('/signup', function (req, res) {
   res.render('signup');
 });
@@ -95,7 +96,6 @@ app.get('/logout', function (req, res) {
   console.log("AFTER logout", req.user);
   res.redirect('/');
 });
-
 /*
  * JSON ENDPOINTS
  */

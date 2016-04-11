@@ -86,7 +86,7 @@
           <div class='snippets' id="snippets-list">
             <!-- one snippet -->
             <script id="snippets-template" type="text/x-handlebars-template">
-              <div class="row snippet" data-snippet-id="{{_id}}">
+              <div class="row snippet" data-snippet-id="\{{_id}}">
 
                 <div class="col-md-10 col-md-offset-1">
                   <div class="panel panel-default">
@@ -98,17 +98,17 @@
                         <ul class="list-group">
                           <li class="list-group-item">
                             <h4 class='inline-header'>Title:</h4>
-                            <span class='title'>{{title}}</span>
+                            <span class='title'>\{{title}}</span>
                           </li>
 
                           <li class="list-group-item">
                             <h4 class="inline-header">Texts:</h4>
-                            <span class='text'>{{text}}</span>
+                            <span class='text'>\{{text}}</span>
                           </li>
 
                         </ul>
 
-                        <form class="form-inline" id="addCommentForm" data-id={{_id}}>
+                        <form class="form-inline" id="addCommentForm" data-id=\{{_id}}>
                           <div class="form-group">
                             <input type="text" class="form-control" name="comments" placeholder="Comments">
                           </div>
@@ -120,10 +120,10 @@
                           </div>
                           <button type="submit" class="btn btn-default">Add Comment</button>
                         </form>
-                        <form class="form-inline" id="editSnippetForm" data-id={{_id}} name="delete">
+                        <form class="form-inline" id="editSnippetForm" data-id=\{{_id}} name="delete">
                           <button type="submit" class="btn btn-default">Edit</button>
                         </form>
-                        <form class="form-inline" id="deleteSnippetForm" data-id={{_id}} name="delete">
+                        <form class="form-inline" id="deleteSnippetForm" data-id=\{{_id}} name="delete">
                           <button type="submit" class="btn btn-default">Delete</button>
                         </form>
                       </div>
