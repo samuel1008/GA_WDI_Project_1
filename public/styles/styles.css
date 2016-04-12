@@ -2,16 +2,18 @@ body {
   margin: 0;
   background-color: #00bfff;
   background-image: url('/images/simple_bamboo.jpeg');
+  background-repeat: no-repeat;
+
 }
 
+.navbar {
+  background-color: #dcdcdc;
+  color: white;
+}
 
 .jumbotron {
   height: 100%;
   background-image: url('/images/simple_bamboo.jpeg');
-}
-
-#newSnippetForm {
-  font: blue;
 }
 
 }
@@ -35,4 +37,19 @@ body {
   text-align: center;
   margin: 10px;
   font-size: 55px;
+}
+
+.row1 {
+  opacity: 0.9;
+  text-align: justify;
+}
+
+.panel {
+  background-color: #dcdcdc;
+  opacity: 0.9;
+}
+
+.panel2 {
+  background-color: black;
+
 }
