@@ -42,27 +42,27 @@ $(document).ready(function() {
     });
   });
 
-  $(".snippets").on('submit', '#addCommentForm', function(e) {
-    e.preventDefault();
-    console.log('new comments');
-    $.ajax({
-      method: 'POST',
-      url: baseUrl+$(this).attr('data-id')+'/comments',
-      data: $(this).serializeArray(),
-      // success: newCommentSuccess,
-      // error: newCommentError
-    });
-  });
+  // $(".snippets").on('submit', '#addCommentForm', function(e) {
+  //   e.preventDefault();
+  //   console.log('new comments', $(this).serializeArray());
+  //   $.ajax({
+  //     method: 'POST',
+  //     url: baseUrl+$(this).attr('data-id')+'/comments',
+  //     data: $(this).serializeArray(),
+  //     success: newCommentSuccess,
+  //     error: newCommentError
+  //   });
+  // });
 
   $(".snippets").on('click', ".btn-snippetUpdate", function (e) {
      e.preventDefault();
-     $(this).serializeArray();
+     console.log("serialized : ", $('#edittt').serialize());
      var snippetId = $(this).attr('edit-id');
-     console.log(snippetId);
+     console.log("the edit id is: ", snippetId);
      $.ajax({
        method: 'PUT',
        url: baseUrl+$(this).attr('edit-id'),
-       data: $(this).serializeArray(),
+       data: $('#edittt').serialize(),
        success: editSnippetSuccess,
        error: editSnippetError
      });
@@ -102,10 +102,19 @@ function newSnippetError() {
 }
 
 function editSnippetSuccess(json) {
-  deleteSnippetSuccess(json);
-  renderSnippet(json);
-
-
+  console.log("edit is working!");
+  var snippet = json;
+  console.log("updated snippet", json);
+  var snippetId = snippet._id;
+  for(var index = 0; index < allSnippets.length; index++) {
+    if(allSnippets[index]._id === snippetId) {
+      allSnippets[index] = snippet;
+      console.log(snippet);
+      break;
+  }
+}
+deleteSnippetSuccess(json);
+renderSnippet(json);
 }
 
 function editSnippetError() {

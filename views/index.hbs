@@ -106,10 +106,10 @@
                             <br>
                             <form class="form-inline update-post">
                               <div class="form-group">
-                                <input type="text" name="title" class="form-control" placeholder="Title" value="\{{title}}">
+                                <input  type="text" name="title" class="form-control" placeholder="Title" value="\{{title}}">
                               </div>
                               <div class="form-group">
-                                <input type="text" name="text" class="form-control" placeholder="Description" value="\{{text}}">
+                                <input id="edittt" type="text" name="text" class="form-control" placeholder="Description" value="\{{text}}">
                               </div>
                               <div class="form-group" edit-id=\{{_id}}>
                                 <input type="submit" class="btn btn-update btn-block btn-default btn-snippetUpdate" edit-id="\{{_id}}" value="Update">
@@ -119,7 +119,7 @@
 
                         </ul>
                         <a href="javascript:void(0)" data-toggle="collapse" data-target="#\{{_id}}">
-                          <button type="submit" class="btn btn-default" data-id="\{{_id}}">Edit</button>
+                          <button type="submit" class="btn btn-default" data-id="\{{_id}}" id="edit">Edit</button>
                         </a>
                         <form class="form-inline" id="deleteSnippetForm" data-id="\{{_id}}" name="delete">
                           <button type="submit" class="btn btn-default">Delete</button>
