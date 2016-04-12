@@ -1,11 +1,29 @@
 body {
   margin: 0;
+  background-color: #00bfff;
+  background-image: url('/images/simple_bamboo.jpeg');
 }
 
+
+.jumbotron {
+  height: 100%;
+  background-image: url('/images/simple_bamboo.jpeg');
+
+.two {
+  opacity: .09;
+}
+
+}
+
+.title  {
+  text-align: center;
+}
 
 
 #submitbtn {
   text-align: center;
+  color: blue;
+  background-color: blue;
 }
 
 #snippets {
