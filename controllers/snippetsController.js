@@ -63,7 +63,7 @@ function update (req, res) {
     if(err){
       console.log('snippetsController.update error', err);
     }
-    foundSnippet.title = req.body.title;
+    // foundSnippet.title = req.body.title;
     foundSnippet.text = req.body.text;
     foundSnippet.save(function(err, savedSnippet){
       if(err) {
